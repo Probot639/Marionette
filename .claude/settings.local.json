@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git -C /home/odessa/Marionette log --oneline --all)",
+      "Bash(go version:*)",
+      "Bash(find:*)",
+      "Bash(git ls-tree:*)",
+      "Bash(xargs -I{} sh -c 'echo \"\"=== {} ===\"\"; cat {}')",
+      "Bash(node --version:*)",
+      "Bash(npm --version:*)",
+      "Bash(docker:*)",
+      "Bash(docker compose:*)",
+      "Bash(echo:*)",
+      "Bash(wsl bash -c \"sudo -n true 2>&1 && echo ''sudo: no password'' || echo ''sudo: needs password''\")",
+      "Bash(wsl bash:*)"
+    ]
+  }
+}
