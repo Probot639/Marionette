@@ -1,0 +1,34 @@
+# Go binaries
+bin/
+*.exe
+
+# Go test cache
+**/testdata/
+**/*.test
+
+# Go workspace artifacts
+go.work.sum
+
+# OS artifacts
+.DS_Store
+Thumbs.db
+
+# Editor artifacts
+.vscode/settings.json
+.idea/
+*.swp
+*.swo
+
+# Dashboard
+dashboard/node_modules/
+dashboard/dist/
+dashboard/.env
+dashboard/.env.local
+
+# Docker secrets and generated configs
+docker/secrets/*
+!docker/secrets/.gitkeep
+docker/configs/*.generated.*
+
+# Build artifacts
+*.log
