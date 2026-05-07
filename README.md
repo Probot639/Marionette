@@ -58,7 +58,7 @@ The agent. It runs on a target host, beacons home on the schedule the puppeteer 
 The covert relay. The current design is a DNS-style channel, hence the base32-DNS encoder in `shared/util`, but the relay layer is general enough to host other low-noise transports later.
 
 #### shared
-Holds the parts everyone needs: AES-256-GCM for payload encryption, X25519 for key exchange, DNS-safe base32, and a chunker for transports with small frames.
+Holds the parts everyone needs. `crypto` has AES-256-GCM and X25519. `util` has DNS-safe base32 and a chunker for transports with small frames. `protocol` defines the doll-to-teamserver wire format (see `shared/protocol/README.md` for the design).
 
 #### dashboard
 A React app talking to the teamserver API. Operators who don't want to live in puppet's terminal use this instead.

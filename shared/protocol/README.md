@@ -2,6 +2,10 @@
 
 Wire format and message catalog for doll-to-teamserver traffic.
 
+## Status
+
+`frame.go` (envelope, framing, AEAD wrap), `handshake.go` (Register, RegisterAck, Config), and `beacon.go` (Beacon, BeaconAck, Result, String, Status) are wired up and tested. `strings.go` (the v1 String type catalog with Shell/Sleep/Exit/Cd/Pwd/Whoami payload encoders) is next.
+
 ## Wire shape
 
 Two layers. Outer is what hits the wire (and what listeners forward without
