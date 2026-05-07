@@ -37,8 +37,8 @@ func TestBeaconRoundTrip(t *testing.T) {
 func TestBeaconAckRoundTrip(t *testing.T) {
 	in := BeaconAck{
 		Strings: []String{
-			{StringID: 100, Type: 1, Payload: []byte("whoami")},
-			{StringID: 101, Type: 4, Payload: []byte("/tmp")},
+			{StringID: 100, Type: StringShell, Payload: []byte("whoami")},
+			{StringID: 101, Type: StringCd, Payload: []byte("/tmp")},
 		},
 	}
 	b, err := in.MarshalBinary()

@@ -4,7 +4,7 @@ Wire format and message catalog for doll-to-teamserver traffic.
 
 ## Status
 
-`frame.go` (envelope, framing, AEAD wrap), `handshake.go` (Register, RegisterAck, Config), and `beacon.go` (Beacon, BeaconAck, Result, String, Status) are wired up and tested. `strings.go` (the v1 String type catalog with Shell/Sleep/Exit/Cd/Pwd/Whoami payload encoders) is next.
+The protocol package is feature-complete for v1. `frame.go` handles the envelope, framing, and AEAD wrap. `handshake.go` covers Register, RegisterAck, and Config. `beacon.go` carries Beacon, BeaconAck, Result, String, and Status. `strings.go` defines the StringType catalog (Shell, Sleep, Exit, Cd, Pwd, Whoami) and the Sleep payload helpers. Next: wiring this into teamserver and doll.
 
 ## Wire shape
 

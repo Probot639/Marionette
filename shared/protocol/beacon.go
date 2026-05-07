@@ -37,11 +37,11 @@ type Result struct {
 }
 
 // String is one entry in a BeaconAck: a tasking issued from server to doll.
-// The Type byte selects which payload encoder applies (Shell, Sleep, ...).
-// String type constants will land in strings.go.
+// The Type field selects which payload encoder applies. See strings.go for
+// the type catalog and any per-type payload helpers.
 type String struct {
 	StringID uint64
-	Type     uint8
+	Type     StringType
 	Payload  []byte
 }
 
@@ -77,7 +77,7 @@ func readResult(b []byte, r *Result) (int, error) {
 
 func appendString(buf []byte, s *String) []byte {
 	buf = binary.LittleEndian.AppendUint64(buf, s.StringID)
-	buf = append(buf, s.Type)
+	buf = append(buf, byte(s.Type))
 	buf = binary.AppendUvarint(buf, uint64(len(s.Payload)))
 	return append(buf, s.Payload...)
 }
@@ -87,7 +87,7 @@ func readString(b []byte, s *String) (int, error) {
 		return 0, fmt.Errorf("protocol: string header %d bytes, need %d", len(b), itemHeaderSize)
 	}
 	s.StringID = binary.LittleEndian.Uint64(b[0:8])
-	s.Type = b[8]
+	s.Type = StringType(b[8])
 	n, read := binary.Uvarint(b[itemHeaderSize:])
 	if read <= 0 {
 		return 0, errors.New("protocol: bad string payload length varint")
