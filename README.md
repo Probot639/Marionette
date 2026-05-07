@@ -81,3 +81,17 @@ Three networks by design:
 
 If something goes wrong on the listener side, the blast radius stops at that boundary.
 
+## Anti-RE for dolls
+
+Dolls run on hosts that don't belong to us. The doll binary should be annoying to reverse, the whisper relay similarly. Teamserver and puppet stay clean because they sit on operator infrastructure.
+
+`make release` builds the hardened path:
+
+- `garble` for name and string obfuscation
+- `-trimpath` to drop filesystem paths from the binary
+- `-ldflags "-s -w"` to strip the symbol table and DWARF info
+
+`make build` stays unhardened for development. Switch to `make release` when packaging anything that's leaving the lab.
+
+This is the baseline. Per-build key injection, hypervisor checks, and timing-based debugger detection are on the list.
+
